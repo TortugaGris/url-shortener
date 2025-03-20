@@ -7,8 +7,9 @@
     "dev": "ng serve -c development",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "emulators:start": "cd functions && npm run-script build && cd .. && firebase emulators:start",
-    "test": "ng test"
+    "emulators:start": "(cd functions && npm run-script build) && firebase emulators:start",
+    "test": "ng test",
+    "install": "(cd functions && npm install) && npm install"
   },
   "private": true,
   "dependencies": {
