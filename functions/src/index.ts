@@ -8,6 +8,8 @@
  */
 import {onRequest} from "firebase-functions/v2/https";
 import API from "./api/app";
+import * as admin from "firebase-admin";
+admin.initializeApp();
 // import * as logger from "firebase-functions/logger";
 
 // Start writing functions
