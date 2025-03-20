@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "tailwindcss";
+@reference "tailwindcss/theme.css";
 
 body {
   @apply bg-slate-800;
