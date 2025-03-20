@@ -9,19 +9,19 @@
 npm install -g firebase-tools
 ```
 ## Desarrollo
-1.Clonar este repo
+1. Clonar este repo
 ```bash
 git clone git@github.com:tortugagris/url-shortener.git
 ```
-2.Instalar dependencias de Angular y Firebase (`/functions`)
+2. Instalar dependencias de Angular y Firebase.
 ```bash
 npm run install
 ```
-3.Iniciar emulador de Firebase (`http://localhost:4000/`).
+3. Iniciar emulador de Firebase (`http://localhost:4000/`).
 ```bash
 npm run emulator:start
 ```
-4.Iniciar servidor de desarrollo (`http://localhost:4200/`).
+4. Iniciar servidor de desarrollo (`http://localhost:4200/`).
 ```bash
 npm run dev
 ```
