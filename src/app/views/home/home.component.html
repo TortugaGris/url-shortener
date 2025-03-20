@@ -1,5 +1,10 @@
 <main class="m-auto mt-5 w-[400px] border border-amber-950 p-5 rounded-xl flex flex-col gap-2 bg-slate-50">
   <h1 class="text-2xl font-bold">URL Shortener</h1>
-  <input class="border w-full rounded-lg px-2 py-1" placeholder="Enter long url here"/>
-  <button class="bg-amber-600 text-slate-50 py-2 font-bold rounded-lg" >Shorten URL</button>
+  <form class="flex flex-col gap-2"[formGroup]="urlForm" (ngSubmit)="onSubmit()">
+    <input class="border w-full rounded-lg px-2 py-1" placeholder="Enter long url here" formControlName="url"/>
+    <button class="bg-amber-600 text-slate-50 py-2 font-bold rounded-lg cursor-pointer" type="submit">Shorten URL</button>
+  </form>
+  @if(shortLink$ | async; as shortLink) {
+    {{shortLink}}
+  }
 </main>

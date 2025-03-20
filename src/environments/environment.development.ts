@@ -1,4 +1,6 @@
-export const environment = {
+import { Environment } from "./environment.interface";
+
+export const environment: Environment = {
   firebase: {
     projectId: "demo-url-shortener",
     appId: "1:21377519266:web:703774ca3623dafec991fb",
@@ -9,4 +11,5 @@ export const environment = {
   },
   useEmulators: true,
   production: false,
+  apiUrl: 'http://127.0.0.1:5001/tortugagris-url-shortener/us-central1/api',
 };
