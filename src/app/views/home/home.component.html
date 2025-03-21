@@ -23,8 +23,14 @@
         >Go</a>
       </header>
       <div class="flex justify-between">
-        <p>{{link.url}}</p>
-        <p>{{link.clicks}}</p>
+        <div>
+          <h4 class="text-sm text-zinc-400">Original Link</h4>
+          <p>{{link.url}}</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <h4 class="text-sm text-zinc-400">Clicks</h4>
+          <p>{{link.clicks}}</p>
+        </div>
       </div>
     </article>
     }

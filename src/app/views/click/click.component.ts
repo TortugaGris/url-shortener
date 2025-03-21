@@ -15,6 +15,8 @@ export class ClickComponent {
   ) {
     const linkId = this.route.snapshot.paramMap.get("linkId")
     console.log(linkId);
-    if(linkId) this.api.addClick(linkId);
+    if(linkId) {
+      this.api.addClick(linkId).then((link) => window.location.href=link);
+    };
   }
 }

@@ -9,6 +9,10 @@ export interface CreateShortLinkResponse {
   slug: string;
 }
 
+export interface AddClickResponse {
+  url: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -42,11 +46,11 @@ export class ApiService {
     );
   }
 
-  addClick(linkId: string): Promise<void> {
-    return firstValueFrom(this._http.post(environment.apiUrl + '/click', {
+  addClick(linkId: string): Promise<string> {
+    return firstValueFrom(this._http.post<AddClickResponse>(environment.apiUrl + '/click', {
       linkId,
     }).pipe(
-      map(() => {}),
+      map((obj) => obj.url),
     ));
   }
 }
