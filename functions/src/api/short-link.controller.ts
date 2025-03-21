@@ -1,6 +1,6 @@
 import {Response} from "express";
 import crypto from "crypto";
-import {CreateShortLinkRequest} from "./short-link.schema";
+import {CreateShortLinkRequest} from "./request.schema";
 import {TypedRequestBody} from "./utils.schema";
 import {firestore} from "firebase-admin";
 
@@ -28,7 +28,7 @@ export async function createShortLink(
     const docRef = db.collection("links").doc(docId);
 
     try {
-      await docRef.create({url: req.body.url});
+      await docRef.create({url: req.body.url, clicks: 0});
       res.status(200).json({success: true, slug: docId});
       return;
     } catch (e) {

@@ -13,9 +13,13 @@
         <h3 class="font-bold">{{hostUrl}}/{{link.id}}</h3>
         <a class="bg-zinc-800 px-2 py-1 rounded border border-zinc-700 cursor-pointer hover:bg-zinc-700 hover:border-zinc-600 transition-colors"
            [href]="'/'+link.id"
+           target="_blank"
         >Go</a>
       </header>
-      <p>{{link.url}}</p>
+      <div class="flex justify-between">
+        <p>{{link.url}}</p>
+        <p>{{link.clicks}}</p>
+      </div>
     </article>
     }
   </section>

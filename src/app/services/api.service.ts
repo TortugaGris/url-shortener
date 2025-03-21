@@ -41,4 +41,12 @@ export class ApiService {
       map((data) => data.map((link) => LinkSchema.parse(link))),
     );
   }
+
+  addClick(linkId: string): Promise<void> {
+    return firstValueFrom(this._http.post(environment.apiUrl + '/click', {
+      linkId,
+    }).pipe(
+      map(() => {}),
+    ));
+  }
 }
