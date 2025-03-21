@@ -5,12 +5,14 @@ import { ApiService } from '../../services/api.service';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Link } from '../../models/link.interface';
+import { FormatDatePipe } from '../../pipes/format-date.pipe';
 
 @Component({
   selector: 'app-home',
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormatDatePipe,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

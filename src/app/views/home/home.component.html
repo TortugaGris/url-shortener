@@ -31,6 +31,10 @@
           <h4 class="text-sm text-zinc-400">Clicks</h4>
           <p>{{link.clicks}}</p>
         </div>
+        <div class="flex flex-col items-center">
+          <h4 class="text-sm text-zinc-400">Expiration Date</h4>
+          <p>{{link.expiredAt | formatDate}}</p>
+        </div>
       </div>
     </article>
     }

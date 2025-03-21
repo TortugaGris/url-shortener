@@ -3,6 +3,8 @@ import crypto from "crypto";
 import {CreateShortLinkRequest} from "./request.schema";
 import {TypedRequestBody} from "./utils.schema";
 import {firestore} from "firebase-admin";
+import {FieldValue, Timestamp} from "firebase-admin/firestore";
+import {DateTime} from "luxon";
 
 /**
  * Handles the creation of a short link
@@ -28,7 +30,14 @@ export async function createShortLink(
     const docRef = db.collection("links").doc(docId);
 
     try {
-      await docRef.create({url: req.body.url, clicks: 0});
+      await docRef.create({
+        url: req.body.url,
+        clicks: 0,
+        createdAt: FieldValue.serverTimestamp(),
+        expiredAt: Timestamp.fromDate(
+          DateTime.now().plus({days: 3}).toJSDate()
+        ),
+      });
       res.status(200).json({success: true, slug: docId});
       return;
     } catch (e) {

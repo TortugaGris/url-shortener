@@ -5,7 +5,7 @@ import {firestore} from "firebase-admin";
 import {FieldValue} from "firebase-admin/firestore";
 
 /**
- * Handles the creation of a short link
+ * Handles incrementing click count of links
  *
  * @param {Object} req - The express request
  * @param {Object} res - The express response
