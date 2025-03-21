@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
@@ -17,7 +17,10 @@ import { Link } from '../../models/link.interface';
 })
 export class HomeComponent {
   urlForm = new FormGroup({
-    url: new FormControl(''),
+    url: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
+    ]),
   });
   hostUrl = environment.hostUrl;
   links$?:Observable<Link[]>;
