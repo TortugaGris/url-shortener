@@ -39,6 +39,7 @@ export class HomeComponent {
     const url = this.urlForm.value.url;
     if (url) this.api.createShortLink(url);
     else console.error('Empty URL');
+    this.urlForm.reset()
   }
 
   copyToClipboard(hostUrl: string, linkId: string) {
