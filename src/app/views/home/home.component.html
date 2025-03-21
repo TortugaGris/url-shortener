@@ -9,23 +9,28 @@
       @if(urlForm.get('url')?.hasError('pattern') && urlForm.get('url')?.touched) {
         <p class="text-red-400 text-sm">Please enter a valid URL.</p>
       }
-      <button class="bg-zinc-100 text-zinc-950 py-2 rounded-lg cursor-pointer" type="submit">Shorten URL</button>
+      <button class="bg-zinc-100 text-zinc-950 py-2 rounded-lg cursor-pointer hover:bg-zinc-200 disabled:opacity-50 disabled:hover:bg-zinc-100 disabled:cursor-not-allowed"
+        type="submit"
+        [disabled]="urlForm.get('url')?.hasError('required') || urlForm.get('url')?.hasError('pattern')"
+        >Shorten URL</button>
     </form>
   </section>
   <section class="flex flex-col gap-2">
     @for(link of links$ | async; track $index) {
     <article class="border border-zinc-700 p-3 rounded-xl">
       <header class="flex justify-between">
-        <h3 class="font-bold">{{hostUrl}}/{{link.id}}</h3>
-        <a class="bg-zinc-800 px-2 py-1 rounded border border-zinc-700 cursor-pointer hover:bg-zinc-700 hover:border-zinc-600 transition-colors"
+        <h3 class="font-bold cursor-pointer"
+            (click)="copyToClipboard(hostUrl, link.id)"
+          >{{hostUrl | truncate:30}}/{{link.id}} <i-feather name="copy" class="w-[16px]! h-[16px]!"></i-feather></h3>
+        <a class="bg-zinc-800 px-2 pt-1 rounded border border-zinc-700 cursor-pointer hover:bg-zinc-700 hover:border-zinc-600 transition-colors"
            [href]="'/'+link.id"
            target="_blank"
-        >Go</a>
+          ><i-feather name="external-link" class="w-[16px]! h-[16px]!"></i-feather></a>
       </header>
       <div class="flex justify-between">
         <div>
           <h4 class="text-sm text-zinc-400">Original Link</h4>
-          <p>{{link.url}}</p>
+          <p>{{link.url | truncate:30}}</p>
         </div>
         <div class="flex flex-col items-center">
           <h4 class="text-sm text-zinc-400">Clicks</h4>

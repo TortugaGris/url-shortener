@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Link } from '../../models/link.interface';
 import { FormatDatePipe } from '../../pipes/format-date.pipe';
+import { IconsModule } from '../../icons/icons.module';
+import { TruncatePipe } from '../../pipes/truncate.pipe';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +15,8 @@ import { FormatDatePipe } from '../../pipes/format-date.pipe';
     CommonModule,
     ReactiveFormsModule,
     FormatDatePipe,
+    TruncatePipe,
+    IconsModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -35,5 +39,9 @@ export class HomeComponent {
     const url = this.urlForm.value.url;
     if (url) this.api.createShortLink(url);
     else console.error('Empty URL');
+  }
+
+  copyToClipboard(hostUrl: string, linkId: string) {
+     navigator.clipboard.writeText(`${hostUrl}/${linkId}`);
   }
 }
