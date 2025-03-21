@@ -10,4 +10,5 @@ export interface Environment {
   useEmulators: boolean,
   production: boolean,
   apiUrl: string,
+  hostUrl: string,
 };

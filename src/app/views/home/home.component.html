@@ -1,10 +1,22 @@
-<main class="m-auto mt-5 w-[400px] border border-amber-950 p-5 rounded-xl flex flex-col gap-2 bg-slate-50">
-  <h1 class="text-2xl font-bold">URL Shortener</h1>
-  <form class="flex flex-col gap-2"[formGroup]="urlForm" (ngSubmit)="onSubmit()">
-    <input class="border w-full rounded-lg px-2 py-1" placeholder="Enter long url here" formControlName="url"/>
-    <button class="bg-amber-600 text-slate-50 py-2 font-bold rounded-lg cursor-pointer" type="submit">Shorten URL</button>
-  </form>
-  @if(shortLink$ | async; as shortLink) {
-    {{shortLink}}
-  }
+<main class="m-auto mt-5 w-[400px] flex flex-col gap-3">
+  <section class="flex flex-col gap-2 border border-zinc-700 p-5 rounded-xl">
+    <h1 class="text-2xl font-bold">URL Shortener</h1>
+    <form class="flex flex-col gap-2"[formGroup]="urlForm" (ngSubmit)="onSubmit()">
+      <input class="border border-zinc-700 w-full rounded-lg px-2 py-1" placeholder="Enter long url here" formControlName="url"/>
+      <button class="bg-zinc-100 text-zinc-950 py-2 rounded-lg cursor-pointer" type="submit">Shorten URL</button>
+    </form>
+  </section>
+  <section class="flex flex-col gap-2">
+    @for(link of links$ | async; track $index) {
+    <article class="border border-zinc-700 p-3 rounded-xl">
+      <header class="flex justify-between">
+        <h3 class="font-bold">{{hostUrl}}/{{link.id}}</h3>
+        <a class="bg-zinc-800 px-2 py-1 rounded border border-zinc-700 cursor-pointer hover:bg-zinc-700 hover:border-zinc-600 transition-colors"
+           [href]="'/'+link.id"
+        >Go</a>
+      </header>
+      <p>{{link.url}}</p>
+    </article>
+    }
+  </section>
 </main>

@@ -12,4 +12,5 @@ export const environment: Environment = {
   useEmulators: false,
   production: true,
   apiUrl: '',
+  hostUrl: '',
 };
