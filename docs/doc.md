@@ -9,10 +9,10 @@ input long URLs, view shortened URLs, and check click statistics.
 -Dependencies:
   - Tailwind CSS: Used for styling the user interface. Tailwind CSS provides a utility-first approach to styling, 
   making it easy to create responsive and visually appealing designs without writing custom CSS.
-  - Zod: Used for schema validation. Zod ensures that incoming data (e.g., URLs) adheres to the 
-  expected format, improving reliability and security.
-  - Luxon: Used for date and time manipulation. Luxon simplifies handling of creation and expiration timestamps, 
-  including time zone management and date comparisons.
+  - Luxon: Used for formatting dates in the view. Luxon simplifies the display of creation and expiration timestamps in 
+  a user-friendly format.
+  - Zod: Used to validate data coming from the backend and Firestore. Zod ensures that the data adheres to the expected 
+  format, improving reliability and security in the frontend.
 
 ### Backend - Firebase Functions (Node.js + Express)
 The backend is implemented using Firebase Functions, which host a Node.js + Express server that acts as the API for the 
@@ -38,11 +38,11 @@ The data model is designed as a single document that stores all the necessary in
 ### Database Structure
 ```json
 {
-  "id": "string",
-  "url": "string",
-  "createdAt": "Timestamp",
-  "expiredAt": "Timestamp",
-  "clicks": "number"
+  "id": "abc123",
+  "url": "https://www.example.com",
+  "createdAt": "2023-10-01T12:00:00Z",
+  "expiredAt": "2023-10-04T12:00:00Z",
+  "clicks": 42
 }
 ```
 ### Field Descriptions
@@ -90,3 +90,6 @@ The data model is designed as a single document that stores all the necessary in
 Due to time constraints, not all potential errors from the backend (e.g., Firestore read/write failures, API 
 validation errors) could be fully handled and communicated to the frontend. This limited the robustness of the error 
 feedback provided to users.
+### Time Constraints
+The project was developed within a limited timeframe, which restricted the ability to implement advanced features 
+(e.g., custom URLs, detailed analytics) and fully optimize error handling.
