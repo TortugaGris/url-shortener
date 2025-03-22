@@ -2,30 +2,30 @@
 ![angular](https://img.shields.io/github/package-json/dependency-version/tortugagris/url-shortener/%40angular%2Fcore)
 ![GitHub last commit](https://img.shields.io/github/last-commit/tortugagris/url-shortener)
 
-## Dependencias
+## Dependencies
 - Node 22.1.0 y npm
 - Firebase CLI
 ```bash
 npm install -g firebase-tools
 ```
 ## Desarrollo
-1. Clonar este repo
+1. Clone this repository:
 ```bash
 git clone git@github.com:tortugagris/url-shortener.git
 ```
-2. Instalar dependencias de Angular y Firebase.
+2. Install Angular and Firebase dependencies:
 ```bash
 npm run install:all
 ```
-3. Iniciar emulador de Firebase (`http://localhost:4000/`).
+3. Start the Firebase emulator (`http://localhost:4000/`).
 ```bash
 npm run emulator:start
 ```
-4. Iniciar servidor de desarrollo (`http://localhost:4200/`).
+4. Start the development server (`http://localhost:4200/`).
 ```bash
 npm run dev
 ```
 
-## Recursos adicionales
+## Additional Resources
 - [Demo](https://tortugagris-url-shortener.web.app/)
-- [Documentación](https://github.com/TortugaGris/url-shortener/blob/develop/docs/doc.md)
+- [Documentation](https://github.com/TortugaGris/url-shortener/blob/develop/docs/doc.md)

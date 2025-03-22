@@ -3,22 +3,35 @@
 ## Architecture
 The application is built using a serverless architecture with the following components:
 
-### Frontend
-- Technology: Angular
-- Description: The frontend is implemented using Angular, providing a responsive and interactive user interface. It 
-  allows users to input long URLs, view shortened URLs, and check click statistics.
+### Frontend - Angular
+The frontend is implemented using Angular, providing a responsive and interactive user interface. It allows users to 
+input long URLs, view shortened URLs, and check click statistics.
+-Dependencies:
+  - Tailwind CSS: Used for styling the user interface. Tailwind CSS provides a utility-first approach to styling, 
+  making it easy to create responsive and visually appealing designs without writing custom CSS.
+  - Zod: Used for schema validation. Zod ensures that incoming data (e.g., URLs) adheres to the 
+  expected format, improving reliability and security.
+  - Luxon: Used for date and time manipulation. Luxon simplifies handling of creation and expiration timestamps, 
+  including time zone management and date comparisons.
 
-### Backend
-- Technology: Firebase Functions (Node.js + Express)
-- Description: The backend is implemented using Firebase Functions, which host a Node.js + Express server that acts 
-  as the API for the application.
-  - API Function: Handles requests for shortening URLs and incrementing click count.
-  - Scheduled Function: Runs once a day to delete expired links from the database.
+### Backend - Firebase Functions (Node.js + Express)
+The backend is implemented using Firebase Functions, which host a Node.js + Express server that acts as the API for the 
+application.
+- API Function: Handles requests for shortening URLs and incrementing click count.
+- Scheduled Function: Runs once a day to delete expired links from the database.
+- Dependencies:
+  - Zod: Used for schema validation in the backend. Zod ensures that incoming data (e.g., URLs) adheres to the 
+  expected format, improving reliability and security.
+  - Luxon: Used for date and time manipulation. Luxon simplifies handling of creation and expiration timestamps, 
+  including time zone management and date comparisons.
+  - CORS: Used to enable Cross-Origin Resource Sharing (CORS) in the backend. This allows the frontend 
+  (hosted on a different domain or port) to securely communicate with the backend API.
+  - http-status-code: Used to simplify the handling of HTTP status codes in the backend. This library provides a clean 
+  and consistent way to return appropriate status codes (e.g., 200, 400, 404) in API responses.
 
-### Database
-- Technology: Firestore
-- Description: Firestore is used as the database to store all data related to the shortened URLs. For security reasons, 
-  the frontend reads data directly from Firestore, while the API is responsible for writing data to Firestore.
+### Database - Firestore
+Firestore is used as the database to store all data related to the shortened URLs. For security reasons, the frontend 
+reads data directly from Firestore, while the API is responsible for writing data to Firestore.
 
 ## Data Model
 The data model is designed as a single document that stores all the necessary information for each shortened URL. 
@@ -41,8 +54,8 @@ The data model is designed as a single document that stores all the necessary in
 
 ## API Endpoints
 ### 1. Shorten a URL
-  - Method: POST
-  - Endpoint: /api/short-link
+  - Method: `POST`
+  - Endpoint: `/api/short-link`
   - Body:
     ```json
     {
@@ -56,8 +69,8 @@ The data model is designed as a single document that stores all the necessary in
     }
     ```
 ### 2. Increment click counter
-  - Method: POST
-  - Endpoint: /api/click
+  - Method: `POST`
+  - Endpoint: `/api/click`
   - Body:
     ```json
     {
@@ -67,6 +80,13 @@ The data model is designed as a single document that stores all the necessary in
   - Response:
     ```json
     {
-      "url": "https://short.url/abc123"
+      "url": "https://www.example.com"
     }
+
     ```
+
+## Challenges and Limitations
+### Error Handling from the Backend:
+Due to time constraints, not all potential errors from the backend (e.g., Firestore read/write failures, API 
+validation errors) could be fully handled and communicated to the frontend. This limited the robustness of the error 
+feedback provided to users.
