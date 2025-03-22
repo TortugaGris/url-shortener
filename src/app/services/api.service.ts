@@ -6,7 +6,7 @@ import { Link, LinkSchema } from '../models/link.interface';
 import { collection, collectionData, Firestore, orderBy, query } from '@angular/fire/firestore';
 
 export interface CreateShortLinkResponse {
-  slug: string;
+  linkId: string;
 }
 
 export interface AddClickResponse {
@@ -27,7 +27,7 @@ export class ApiService {
     return firstValueFrom(this._http.post<CreateShortLinkResponse>(environment.apiUrl + '/short-link', {
       url,
     }).pipe(
-      map((obj) => obj.slug),
+      map((obj) => obj.linkId),
       catchError((e, caught) => {
         console.error(e);
         return caught;

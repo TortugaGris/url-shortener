@@ -28,4 +28,4 @@ npm run dev
 
 ## Recursos adicionales
 - [Demo](https://tortugagris-url-shortener.web.app/)
-- [Documentación]()
+- [Documentación](https://github.com/TortugaGris/url-shortener/blob/develop/docs/doc.md)

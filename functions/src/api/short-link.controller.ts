@@ -38,7 +38,7 @@ export async function createShortLink(
           DateTime.now().plus({days: 3}).toJSDate()
         ),
       });
-      res.status(200).json({success: true, slug: docId});
+      res.status(200).json({success: true, linkId: docId});
       return;
     } catch (e) {
       if (typeof e === "object" && e !== null && "code" in e && e.code === 6) {
@@ -54,7 +54,7 @@ export async function createShortLink(
   }
   res.status(400).json({
     success: false,
-    message: "No unique slug could be generated.",
+    message: "No unique id could be generated.",
   });
   return;
 }
