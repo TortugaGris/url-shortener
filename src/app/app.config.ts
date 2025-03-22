@@ -10,6 +10,8 @@ import {
   provideFirestore,
 } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { connectFunctionsEmulator, getFunctions, provideFunctions } from '@angular/fire/functions';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -32,5 +34,13 @@ export const appConfig: ApplicationConfig = {
       }
       return auth;
     }),
+    provideFunctions(() => {
+      const func = getFunctions();
+      if (environment.useEmulators) {
+        connectFunctionsEmulator(func, 'localhost', 5001);
+      }
+      return func
+    }),
+    provideHttpClient(),
   ]
 };
