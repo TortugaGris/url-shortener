@@ -6,7 +6,7 @@ The application is built using a serverless architecture with the following comp
 ### Frontend - Angular
 The frontend is implemented using Angular, providing a responsive and interactive user interface. It allows users to 
 input long URLs, view shortened URLs, and check click statistics.
--Dependencies:
+- Dependencies:
   - Tailwind CSS: Used for styling the user interface. Tailwind CSS provides a utility-first approach to styling, 
   making it easy to create responsive and visually appealing designs without writing custom CSS.
   - Luxon: Used for formatting dates in the view. Luxon simplifies the display of creation and expiration timestamps in 
@@ -86,7 +86,7 @@ The data model is designed as a single document that stores all the necessary in
     ```
 
 ## Challenges and Limitations
-### Error Handling from the Backend:
+### Error Handling from the Backend
 Due to time constraints, not all potential errors from the backend (e.g., Firestore read/write failures, API 
 validation errors) could be fully handled and communicated to the frontend. This limited the robustness of the error 
 feedback provided to users.
