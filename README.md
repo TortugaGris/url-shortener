@@ -15,7 +15,7 @@ git clone git@github.com:tortugagris/url-shortener.git
 ```
 2. Instalar dependencias de Angular y Firebase.
 ```bash
-npm run install
+npm run install:all
 ```
 3. Iniciar emulador de Firebase (`http://localhost:4000/`).
 ```bash

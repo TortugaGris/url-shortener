@@ -10,7 +10,7 @@
     "emulators:start": "(cd functions && npm run-script build) && firebase emulators:start",
     "emulators:kill": "npx kill-port 4000 4400 5000 5001 8080 8085 9099 3000",
     "test": "ng test",
-    "install": "(cd functions && npm install) && npm install"
+    "install:all": "(cd functions && npm install) && npm install"
   },
   "private": true,
   "dependencies": {

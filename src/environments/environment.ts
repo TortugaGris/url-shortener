@@ -11,6 +11,6 @@ export const environment: Environment = {
   },
   useEmulators: false,
   production: true,
-  apiUrl: '',
-  hostUrl: '',
+  apiUrl: 'https://us-central1-tortugagris-url-shortener.cloudfunctions.net/api',
+  hostUrl: 'tortugagris-url-shortener.web.app',
 };
